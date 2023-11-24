@@ -1,0 +1,158 @@
+Selenium provides various methods for selecting elements on a web page. Here's a list of commonly used methods along with examples:
+
+1. **By ID:**
+   - Locate an element by its `id` attribute.
+
+   ```javascript
+   const element = driver.findElement(By.id('elementId'));
+   ```
+
+2. **By Name:**
+   - Locate an element by its `name` attribute.
+
+   ```javascript
+   const element = driver.findElement(By.name('elementName'));
+   ```
+
+3. **By Class Name:**
+   - Locate an element by its `class` attribute.
+
+   ```javascript
+   const element = driver.findElement(By.className('elementClass'));
+   ```
+
+4. **By Tag Name:**
+   - Locate elements by their HTML tag name.
+
+   ```javascript
+   const elements = driver.findElements(By.tagName('div'));
+   ```
+
+5. **By Link Text:**
+   - Locate a hyperlink element by its visible text.
+
+   ```javascript
+   const link = driver.findElement(By.linkText('Click me'));
+   ```
+
+6. **By Partial Link Text:**
+   - Locate a hyperlink element by a partial match of its visible text.
+
+   ```javascript
+   const link = driver.findElement(By.partialLinkText('Click'));
+   ```
+
+7. **By XPath:**
+   - Locate elements using XPath expressions.
+
+   ```javascript
+   const element = driver.findElement(By.xpath('//div[@class="example"]'));
+   ```
+
+8. **By CSS Selector:**
+   - Locate elements using CSS selectors.
+
+   ```javascript
+   const element = driver.findElement(By.css('div.example'));
+   ```
+
+9. **By Custom Attributes:**
+   - Locate elements based on custom attributes.
+
+   ```javascript
+   const element = driver.findElement(By.css('[data-custom="value"]'));
+   ```
+
+10. **Combining Locators:**
+    - Combine locators to create more complex queries.
+
+    ```javascript
+    const element = driver.findElement(By.css('div.example input[type="text"]'));
+    ```
+
+11. **Using `By` Object:**
+    - You can use the `By` object with various locator strategies.
+
+    ```javascript
+    const element = driver.findElement(By.name('elementName'));
+    ```
+/////////////////////////////////////////////
+*******************************************
+Here's an example HTML structure along with corresponding Selenium code for each locator method:
+
+**HTML Structure:**
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locator Examples</title>
+</head>
+<body>
+  <div id="exampleDiv" class="example">
+    <input type="text" name="username" />
+    <input type="password" id="password" />
+    <a href="/dashboard" id="dashboardLink">Dashboard</a>
+    <a href="/profile" class="profile-link">Profile</a>
+    <button onclick="submitForm()">Submit</button>
+  </div>
+
+  <script>
+    function submitForm() {
+      alert('Form submitted!');
+    }
+  </script>
+</body>
+</html>
+```
+
+**Selenium Examples:**
+```javascript
+const { Builder, By } = require('selenium-webdriver');
+
+(async function example() {
+  let driver = await new Builder().forBrowser('chrome').build();
+  try {
+    await driver.get('path/to/your/html/file.html');
+
+    // By ID
+    const byIdElement = await driver.findElement(By.id('password'));
+
+    // By Name
+    const byNameElement = await driver.findElement(By.name('username'));
+
+    // By Class Name
+    const byClassNameElement = await driver.findElement(By.className('example'));
+
+    // By Tag Name
+    const byTagNameElements = await driver.findElements(By.tagName('input'));
+
+    // By Link Text
+    const byLinkTextElement = await driver.findElement(By.linkText('Dashboard'));
+
+    // By Partial Link Text
+    const byPartialLinkTextElement = await driver.findElement(By.partialLinkText('Profile'));
+
+    // By XPath
+    const byXPathElement = await driver.findElement(By.xpath('//div[@class="example"]/input'));
+
+    // By CSS Selector
+    const byCssSelectorElement = await driver.findElement(By.css('a.profile-link'));
+
+    // By Custom Attributes
+    const byCustomAttributeElement = await driver.findElement(By.css('[id="dashboardLink"]'));
+
+    // Combining Locators
+    const combinedLocatorElement = await driver.findElement(By.css('div.example input[type="text"]'));
+
+    // Using By Object
+    const byObjectElement = await driver.findElement(By.name('username'));
+
+    // Perform actions with the elements if needed...
+
+  } finally {
+    await driver.quit();
+  }
+})();
+```
