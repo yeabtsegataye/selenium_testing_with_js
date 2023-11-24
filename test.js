@@ -1,8 +1,9 @@
 const { Builder, By, until } = require('selenium-webdriver');
 const assert = require("assert");
+const env = require('dotenv').config()
 
 describe('Title for testing using Mocha', () => {
-  it('One testing block', async () => {
+  it('login test', async () => {
     let driver = await new Builder().forBrowser('firefox').build();
     try {
       await driver.get('https://meskelwallet-omfg.onrender.com/');
@@ -11,10 +12,10 @@ describe('Title for testing using Mocha', () => {
       await login.click();
 
       const email = await driver.findElement(By.css('input.input[type="email"]'));
-      await email.sendKeys('nahom@gmail.com');
+      await email.sendKeys(process.env.USRNAME);
 
       const password = await driver.findElement(By.css('input.input[type="password"]'));
-      await password.sendKeys('123');
+      await password.sendKeys(process.env.PASSWORD);
                                                       //element.class[type="typeKinde"]
       const submit = await driver.findElement(By.css('button.submit[type="submit"]'));
       await submit.click();
