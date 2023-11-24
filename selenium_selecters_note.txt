@@ -1,3 +1,23 @@
+///////////
+/* 
+to download the webDriver go to the selenium-webdriver and chose your browser 
+then downlod the compateble version and unzip it using     
+then open terminal on the same folder and write this "sudo mv nameOfDriver /usr/local/bin"
+then "export PATH=$PATH:/usr/local/bin" then you can check by writhing the nameOfDriver on the terminal
+if it is successfull it will show some message . if not it will throw error 
+*/
+
+/* to do parall testing add --parallel flag in the package test script 
+then it will run all files that have test in there file name at the same time
+mocha --no-timeouts --parallel */
+
+/* if we went our test report to be displayed inside html file 
+mocha --no-timeouts --parallel --reporter mochawesome --require mochawesome/register  
+check the doc on mochawesome
+if we are not useing parallel testing 
+mocha --no-timeouts --reporter mochawesome 
+we wright like this
+*/
 Selenium provides various methods for selecting elements on a web page. Here's a list of commonly used methods along with examples:
 
 1. **By ID:**

@@ -1,0 +1,119 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2023-11-24T03:17:48.613Z",
+    "end": "2023-11-24T03:18:08.972Z",
+    "duration": 20359,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "6f6857c3-d192-4def-926b-a91ce12e1394",
+      "title": "",
+      "fullFile": "/home/tati/Desktop/my_code/selenium_js_testing/test/test.js",
+      "file": "/test.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "4e1ee3ec-27a1-41c1-b47f-ae645afaf693",
+          "title": "Title for testing using Mocha",
+          "fullFile": "/home/tati/Desktop/my_code/selenium_js_testing/test/test.js",
+          "file": "/test.js",
+          "beforeHooks": [
+            {
+              "title": "\"before each\" hook in \"Title for testing using Mocha\"",
+              "fullTitle": "Title for testing using Mocha \"before each\" hook in \"Title for testing using Mocha\"",
+              "timedOut": false,
+              "duration": 7550,
+              "state": null,
+              "speed": null,
+              "pass": false,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "driver = await new Builder().forBrowser('firefox').build();",
+              "err": {},
+              "uuid": "7e769cfd-8ca3-455b-9612-2743b1e21d4a",
+              "parentUUID": "4e1ee3ec-27a1-41c1-b47f-ae645afaf693",
+              "isHook": true,
+              "skipped": false
+            }
+          ],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "login test",
+              "fullTitle": "Title for testing using Mocha login test",
+              "timedOut": false,
+              "duration": 12798,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "try {\n  await driver.get('https://meskelwallet-omfg.onrender.com/');\n  const login = await driver.findElement(By.css('.btn.btn-light.ml-2'));\n  await login.click();\n  const email = await driver.findElement(By.css('input.input[type=\"email\"]'));\n  await email.sendKeys(process.env.USRNAME);\n  const password = await driver.findElement(By.css('input.input[type=\"password\"]'));\n  await password.sendKeys(process.env.PASSWORD);\n                                                  //element.class[type=\"typeKinde\"]\n  const submit = await driver.findElement(By.css('button.submit[type=\"submit\"]'));\n  await submit.click();\n  const dashboardLink = await driver.wait(until.elementLocated(By.css('a.nav-link[href=\"/Dashboard\"]')), 50000);\n  const result = await dashboardLink.getAttribute('innerText');\n  assert.strictEqual(result, \"Dashboard\", \"Login was not successful\");\n} finally {\n  await driver.quit();\n}",
+              "err": {},
+              "uuid": "f861baf4-bb24-4a55-affa-94d499d09852",
+              "parentUUID": "4e1ee3ec-27a1-41c1-b47f-ae645afaf693",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "f861baf4-bb24-4a55-affa-94d499d09852"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 12798,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 0
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 0
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
